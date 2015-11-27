@@ -1,9 +1,46 @@
-body {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size: 100%;
+//////////////////
+//  GRID  ///
+////////////////
+.grid {
+	position: relative;
+	width: 100%;
+	padding: 0;
+	margin: 0 auto;
+	@include clearfix();
+}
 
-	color: $default-font;
-	background: $body;
+.col {
+	width: 100%;
+	float: left;
+	display: inline;
+
+}
+
+@include mq(medium) {
+
+	.col.half {
+		width: 50%;
+	}
+
+	// .col.push-half {
+	// 	margin-left: 50%;
+	// }
+}
+
+// @include mq(small-only) {
+
+// 	.col.sm-half {
+// 		width: 50%;
+// 	}
+// }
+
+//////////////////
+//  STRUCTURAL  ///
+////////////////
+
+.main-content {
+	padding: 100px 0 50px;
+	min-height: 650px;
 }
 
 .center {
@@ -11,4 +48,12 @@ body {
 
 	max-width: 750px;
 	margin: 0 auto;
+
+	padding: 0 3%;
+
+	@include mq(medium) {
+		padding: 0 15px;
+	}
 }
+
+

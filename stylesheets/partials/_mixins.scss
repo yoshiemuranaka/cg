@@ -1,0 +1,43 @@
+//////////////////
+//  MEDIA QUERIES  ///
+////////////////
+
+@mixin mq($point) {
+	@if $point == medium {
+		@media only screen and (min-width: 43.750em) { @content; }
+	}
+
+	@else if $point == small-only {
+		@media only screen and (max-width: 43.688em) { @content }
+	}
+
+}
+
+//////////////////
+//  GRID  ///
+////////////////
+
+
+@mixin clearfix() {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: '';
+
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+//////////////////
+//  BOX SHADOW  ///
+////////////////
+
+@mixin boxshadow() {
+	-webkit-box-shadow: 0 0 5px $light-grey;
+	-moz-box-shadow: 0 0 5px $light-grey;
+	box-shadow: 0 0 5px $light-grey;
+}

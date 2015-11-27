@@ -1,3 +1,17 @@
+//////////////////
+//  NAV  ///
+////////////////
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+
+    background-color: $white;
+    @include boxshadow();
+}
+
 .main-nav {
 	
 	@include mq(medium) {
@@ -31,4 +45,20 @@
     padding: 0 20px;
 
     letter-spacing: .01em;
+}
+
+//////////////////
+//  FOOTER  ///
+////////////////
+
+
+footer {
+    height: 150px;
+    background-color: $light-grey;
+    font-size: 90%;
+}
+
+.footer-content {
+    margin: 0 auto;
+    text-align: center;
 }
