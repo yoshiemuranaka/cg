@@ -1,0 +1,14 @@
+.small-hide {
+	@include mq(small-only) {
+		display: none;
+	}
+}
+
+.small-reveal {
+	@include mq(small-only) {
+		display: block;
+	}
+	@include mq(medium) {
+		display: none;
+	}
+}

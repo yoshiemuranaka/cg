@@ -1,0 +1,14 @@
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 100%;
+
+	color: $default-font;
+	background: $body;
+}
+
+.center {
+	overflow: visible;
+
+	max-width: 750px;
+	margin: 0 auto;
+}

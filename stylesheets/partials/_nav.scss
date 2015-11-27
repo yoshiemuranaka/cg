@@ -1,0 +1,34 @@
+.main-nav {
+	
+	@include mq(medium) {
+		padding: 0 30px;
+	}
+}
+
+.main-nav__home,
+.main-nav__links
+{
+    display: inline-block;
+
+    width: 50%;
+}
+
+.main-nav__links
+{
+    float: right;
+
+    text-align: right;
+}
+
+.main-nav__links li
+{
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: .9em;
+    font-weight: bold;
+    line-height: 50px;
+
+    height: 50px;
+    padding: 0 20px;
+
+    letter-spacing: .01em;
+}

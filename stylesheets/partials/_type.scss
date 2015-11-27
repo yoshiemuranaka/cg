@@ -1,0 +1,59 @@
+h1,
+h2,
+h3
+{
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+
+    text-rendering: optimizeLegibility;
+}
+
+h1
+{
+    font-size: 2em;
+    line-height: 1.35em;
+
+    margin-bottom: .5em;
+
+    letter-spacing: .01em;
+}
+
+h2
+{
+    font-size: 1.25em;
+    line-height: 1.35em;
+
+    margin-bottom: .5em;
+
+    letter-spacing: .01em;
+}
+
+h3
+{
+    font-size: 1em;
+    line-height: 1.35em;
+
+    margin-bottom: .5em;
+
+    letter-spacing: .01em;
+}
+
+p
+{
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1.35em;
+
+    margin-bottom: 1em;
+
+    letter-spacing: .02em;
+
+    text-rendering: optimizeLegibility;
+}
+
+.page__header
+{
+    text-align: center;
+}
+
