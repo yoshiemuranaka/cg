@@ -2,63 +2,65 @@
 //  NAV  ///
 ////////////////
 
-header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 10;
-
-    background-color: $white;
-    @include boxshadow();
-}
-
 .main-nav {
-	
-	@include mq(medium) {
-		padding: 0 30px;
-	}
+  @include boxshadow();
+  @include mq(medium) {
+    padding: 0 30px;
+  }
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0 3%;
+
+  background-color: $white;
+
+  z-index: 10;
 }
+
 
 .main-nav__home,
-.main-nav__links
-{
-    display: inline-block;
-
-    width: 50%;
+.main-nav__links {
+  display: inline-block;
+  width: 50%;
 }
 
-.main-nav__links
-{
-    float: right;
+.main-nav__links {
+  float: right;
 
-    text-align: right;
+  text-align: right;
 }
 
-.main-nav__links li
-{
-    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: .9em;
-    font-weight: bold;
-    line-height: 50px;
+.main-nav__links li {
+  height: 50px;
+  padding: 0 20px;
 
-    height: 50px;
-    padding: 0 20px;
-
-    letter-spacing: .01em;
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 0.9em;
+  font-weight: bold;
+  letter-spacing: 0.01em;
+  line-height: 50px;
 }
+
+
 
 //////////////////
 //  FOOTER  ///
 ////////////////
 
 
-footer {
-    height: 150px;
-    background-color: $light-grey;
-    font-size: 90%;
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 150px;
+  width: 100%;
+
+  background-color: $light-grey;
 }
 
 .footer-content {
-    margin: 0 auto;
-    text-align: center;
+  margin: 0 auto;
+
+  text-align: center;
 }

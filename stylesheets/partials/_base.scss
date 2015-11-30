@@ -1,59 +1,67 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  @include mq(medium) {
+    font-size: 100%;
+  }
+
+  background: $body;
+
+  color: $default-font;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 115%;
+}
+
+
 //////////////////
 //  GRID  ///
 ////////////////
 .grid {
-	position: relative;
-	width: 100%;
-	padding: 0;
-	margin: 0 auto;
-	@include clearfix();
+  @include clearfix();
+
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .col {
-	width: 100%;
-	float: left;
-	display: inline;
-
+  display: inline;
+  float: left;
+  width: 100%;
 }
 
 @include mq(medium) {
-
-	.col.half {
-		width: 50%;
-	}
-
-	// .col.push-half {
-	// 	margin-left: 50%;
-	// }
+  .col.half {
+    width: 50%;
+  }
 }
 
-// @include mq(small-only) {
 
-// 	.col.sm-half {
-// 		width: 50%;
-// 	}
-// }
 
 //////////////////
 //  STRUCTURAL  ///
 ////////////////
 
+.page-wrapper {
+  position: relative;
+  min-height: 100%;
+}
+
 .main-content {
-	padding: 100px 0 50px;
-	min-height: 650px;
+  padding: 100px 0 150px;
 }
 
 .center {
-	overflow: visible;
+  @include mq(medium) {
+    padding: 0 15px;
+  }
 
-	max-width: 750px;
-	margin: 0 auto;
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 0 3%;
 
-	padding: 0 3%;
-
-	@include mq(medium) {
-		padding: 0 15px;
-	}
+  overflow: visible;
 }
-
-

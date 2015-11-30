@@ -3,15 +3,15 @@
 ////////////////
 
 ul {
-	list-style-type: none;
+  list-style-type: none;
 }
 
 ul.inline li {
-	display: inline-block;
+  display: inline-block;
 }
 
 ul.bullets {
-	list-style-type: disc;
+  list-style-type: disc;
 }
 
 
@@ -20,16 +20,17 @@ ul.bullets {
 ////////////////
 
 .small-hide {
-	@include mq(small-only) {
-		display: none;
-	}
+  @include mq(small-only) {
+    display: none;
+  }
 }
 
 .small-reveal {
-	@include mq(small-only) {
-		display: block;
-	}
-	@include mq(medium) {
-		display: none;
-	}
+  @include mq(small-only) {
+    display: block;
+  }
+  @include mq(medium) {
+    display: none;
+  }
 }
+

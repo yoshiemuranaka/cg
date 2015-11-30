@@ -3,15 +3,18 @@
 ////////////////
 
 @mixin mq($point) {
-	@if $point == medium {
-		@media only screen and (min-width: 43.750em) { @content; }
-	}
-
-	@else if $point == small-only {
-		@media only screen and (max-width: 43.688em) { @content }
-	}
-
+  @if $point == medium {
+    @media only screen and (min-width: 43.750em) {
+      @content;
+    }
+  }
+  @else if $point == small-only {
+    @media only screen and (max-width: 43.688em) {
+      @content
+    }
+  }
 }
+
 
 //////////////////
 //  GRID  ///
@@ -20,7 +23,6 @@
 
 @mixin clearfix() {
   *zoom: 1;
-
   &:before,
   &:after {
     content: '';
@@ -37,7 +39,33 @@
 ////////////////
 
 @mixin boxshadow() {
-	-webkit-box-shadow: 0 0 5px $light-grey;
-	-moz-box-shadow: 0 0 5px $light-grey;
-	box-shadow: 0 0 5px $light-grey;
+  box-shadow: 0 0 5px $light-grey;
+
+  -webkit-box-shadow: 0 0 5px $light-grey;
+  -moz-box-shadow: 0 0 5px $light-grey;
 }
+
+//////////////////
+//  FLEXBOX  ///
+////////////////
+
+// @mixin flexbox($direction, $justify)
+// {
+//     display: -webkit-flex;
+//     display: -moz-box;
+//     display: -ms-flexbox;
+//     display: -o-flexbox;
+//     display: flex;
+
+//     -webkit-flex-direction: $direction;
+//     -moz-flex-direction: $direction;
+//     -ms-flex-direction: $direction;
+//     -o-flex-direction: $direction;
+//     flex-direction: $direction;
+    
+//     -webkit-justify-content: $justify;
+//     -moz-justify-content: $justify;
+//     -ms-justify-content: $justify;
+//     -o-justify-content: $justify;
+//     justify-content: $justify;
+// }

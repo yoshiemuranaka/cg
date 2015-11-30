@@ -1,77 +1,54 @@
-body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 100%;
-
-    color: $default-font;
-    background: $body;
-}
-
-
 h1,
 h2,
-h3
-{
-    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: bold;
-
-    text-rendering: optimizeLegibility;
+h3 {
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
 }
 
-h1
-{
-    font-size: 2em;
-    line-height: 1.35em;
+h1 {
+  margin-bottom: 1.25em;
 
-    margin-bottom: 1.25em;
-
-    letter-spacing: .01em;
+  font-size: 2em;
+  letter-spacing: 0.01em;
+  line-height: 1.35em;
 }
 
-h2
-{
-    font-size: 1.25em;
-    line-height: 1.35em;
+h2 {
+  margin-bottom: 0.5em;
 
-    margin-bottom: .5em;
-
-    letter-spacing: .01em;
+  font-size: 1.25em;
+  letter-spacing: 0.01em;
+  line-height: 1.35em;
 }
 
-h3
-{
-    font-size: 1em;
-    line-height: 1.35em;
+h3 {
+  margin-bottom: 0.5em;
 
-    margin-bottom: .5em;
-
-    letter-spacing: .01em;
+  font-size: 1em;
+  letter-spacing: 0.01em;
+  line-height: 1.35em;
 }
 
-p
-{
-    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1em;
-    font-weight: 500;
-    line-height: 1.45em;
+p {
+  margin-bottom: 1em;
 
-    margin-bottom: 1em;
-
-    letter-spacing: .02em;
-
-    text-rendering: optimizeLegibility;
+  font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.45em;
+  text-rendering: optimizeLegibility;
 }
 
 a {
-    color: $default-font;
-    text-decoration: none;
-
-    &:hover {
-        color: $hover-color;
-    }
+  color: $default-font;
+  text-decoration: none;
+  &:hover {
+    color: $hover-color;
+  }
 }
 
-.page__header
-{
-    text-align: center;
+.page__header {
+  text-align: center;
 }
-
