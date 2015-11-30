@@ -31,6 +31,12 @@ body {
   display: inline;
   float: left;
   width: 100%;
+
+  margin-bottom: 1.5em;
+
+  @include mq(medium) {
+    margin-bottom: 0;
+  }
 }
 
 @include mq(medium) {

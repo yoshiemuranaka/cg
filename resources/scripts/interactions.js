@@ -11,7 +11,7 @@ Grace.Pagination = (function() {
 	};
 
 	var init = function() {
-		console.log(config.allPages)
+		config.allPages.addClass('hidden')
 	};
 
 	return {

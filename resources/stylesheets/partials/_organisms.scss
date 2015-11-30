@@ -50,17 +50,29 @@
 
 
 .footer {
+  @include mq(medium) {
+    padding-top: 2em;
+  }
+
   position: absolute;
   bottom: 0;
   left: 0;
   height: 150px;
   width: 100%;
+  padding-top: 1em;
 
   background-color: $light-grey;
 }
 
 .footer-content {
+  @include mq(medium) {
+    p {
+      margin-bottom: 0;
+    }
+  }
+
   margin: 0 auto;
 
   text-align: center;
 }
+
