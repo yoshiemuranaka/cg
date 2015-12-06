@@ -14,29 +14,30 @@ $(function(){
 		},
 
 		initHistory: function() {
-			History.Adapter.bind(window, 'hashchange', this.historyHandler);
+			History.Adapter.bind(window, 'statechange', this.historyHandler);
 		},
 
 		historyHandler: function() {
-			console.log('historyHandler')
-
-			console.log(History.getState());
-
+			console.log('historyHandler');
 		},
 
-		pushState: function() {
+		pushState: function($this) {
 			var c = Grace.Pagination.config.URLs;
-			var pageIndex = $(this).data().page;
-			
+			var pageIndex = $this.data().page;
+
 			var data = '{state:' + pageIndex + '}';
 			var title = c[pageIndex];
-			var url = '/#/' + c[pageIndex]; 
+			var url = '/?/' + c[pageIndex]; 
 
-			History.replaceState(data, title, url);
+			History.pushState(data, title, url);
 		},
 
 		events: function() {
-			this.DOM.links.on('click', this.pushState);
+			this.DOM.links.click(function(event){
+				event.preventDefault();
+				Grace.Pagination.pushState($(this));
+			});
+
 		},
 
 		init: function() {
