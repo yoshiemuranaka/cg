@@ -10,24 +10,29 @@ $(function(){
 		},
 
 		config: {
-			URLs : ['home', 'about', 'products']
+			URLs : ['Home', 'About', 'Products']
 		},
 
 		initHistory: function() {
-			History.Adapter.bind(window, 'statechange', this.historyHandler);
+			History.Adapter.bind(window, 'hashchange', this.historyHandler);
 		},
 
 		historyHandler: function() {
 			console.log('historyHandler')
+
+			console.log(History.getState());
+
 		},
 
 		pushState: function() {
 			var c = Grace.Pagination.config.URLs;
 			var pageIndex = $(this).data().page;
+			
+			var data = '{state:' + pageIndex + '}';
+			var title = c[pageIndex];
+			var url = '/#/' + c[pageIndex]; 
 
-			var url = '/#' + c[pageIndex] 
-
-			History.replaceState('', '', url);
+			History.replaceState(data, title, url);
 		},
 
 		events: function() {
@@ -35,7 +40,6 @@ $(function(){
 		},
 
 		init: function() {
-			console.log('init');
 			this.initHistory();
 			this.events();
 		}
