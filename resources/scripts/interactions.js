@@ -1,25 +1,46 @@
-var Grace = Grace || {};
+$(function(){
 
-Grace.Data = {
-	page : 1
-};
+	var Grace = Grace || {};
 
-Grace.Pagination = (function() {
+	Grace.Pagination = {
 
-	var config = {
-		allPages: $('.js-animate.page'),
-	};
+		DOM: {
+			allPages: $('.js-animate.page'),
+			links: $('.js-page-link')
+		},
 
-	var init = function() {
-		config.allPages.addClass('hidden')
-	};
+		config: {
+			URLs : ['home', 'about', 'products']
+		},
 
-	return {
-		init: init
-	};
+		initHistory: function() {
+			History.Adapter.bind(window, 'statechange', this.historyHandler);
+		},
 
-} ());
+		historyHandler: function() {
+			console.log('historyHandler')
+		},
 
-$(document).ready(function(){
+		pushState: function() {
+			var c = Grace.Pagination.config.URLs;
+			var pageIndex = $(this).data().page;
+
+			var url = '/#' + c[pageIndex] 
+
+			History.replaceState('', '', url);
+		},
+
+		events: function() {
+			this.DOM.links.on('click', this.pushState);
+		},
+
+		init: function() {
+			console.log('init');
+			this.initHistory();
+			this.events();
+		}
+
+	}
+
 	Grace.Pagination.init();
 });

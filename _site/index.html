@@ -21,6 +21,7 @@
   ================================================== -->
 
   <script type="text/javascript" src="resources/scripts/vendor/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="resources/scripts/vendor/jquery.history.js"></script>
   <script type="text/javascript" src="resources/scripts/interactions.js"></script> 
 
 
@@ -32,13 +33,13 @@
 	
 		<header class="main-nav">
 		<div class="main-nav__home">
-			<a href="#"><img class="logo" src="http://placehold.it/50x50"></a>
+			<a class="js-page-link" data-page="0"><img class="logo" src="http://placehold.it/50x50"></a>
 		</div>
 
 		<div class="main-nav__links">
 			<ul class="inline small-hide">
-				<li><a href="#">About</a></li>
-				<li><a href="#">Products</a></li>
+				<li><a class="js-page-link" data-page="1">About</a></li>
+				<li><a class="js-page-link" data-page="2">Products</a></li>
 			</ul>
 			<div class="small-reveal"><a href="#" style="height:50px; line-height:50px; font-size:1.5em">&#9776;</a></div>
 		</div>
@@ -47,11 +48,11 @@
 	<main class="main-content">
 		<div class="center">
 			
+		<div class="page js-animate" data-page="0">
+</div>
 		<div class="page js-animate" data-page="1">
 </div>
 		<div class="page js-animate" data-page="2">
-</div>
-		<div class="page js-animate" data-page="3">
 	<h1 class="page__header">Our Products</h1>
 	
 	<div class="section">
@@ -92,6 +93,7 @@
 	</footer>
 	
 </div>
+  
 
 </body>
 </html>
