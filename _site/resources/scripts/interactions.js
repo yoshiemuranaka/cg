@@ -6,11 +6,12 @@ $(function(){
 
 		DOM: {
 			allPages: $('.js-animate.page'),
-			links: $('.js-page-link')
+			links: $('.js-page-target')
 		},
 
 		config: {
-			URLs : ['Home', 'About', 'Products']
+			URLs : ['Home', 'About', 'Products'],
+			activePage: 1
 		},
 
 		initHistory: function() {
@@ -18,18 +19,27 @@ $(function(){
 		},
 
 		historyHandler: function() {
-			console.log('historyHandler');
+			var state = History.getState();
+
+			Grace.Pagination.hidePage();
+
+			var revealPage = $('[data-page=' + state.data.page + ']')
+			revealPage.addClass('active')
 		},
 
 		pushState: function($this) {
 			var c = Grace.Pagination.config.URLs;
-			var pageIndex = $this.data().page;
-
-			var data = '{state:' + pageIndex + '}';
+			var pageIndex = $this.data().pageTarget;
+			var data = {};
+					data.page = pageIndex;
 			var title = c[pageIndex];
 			var url = '/?/' + c[pageIndex]; 
 
 			History.pushState(data, title, url);
+		},
+
+		hidePage: function() {
+			// this.DOM.allPages.find('.active').removeClass('active');
 		},
 
 		events: function() {
@@ -46,6 +56,6 @@ $(function(){
 		}
 
 	}
-
+//if Modernizr.history
 	Grace.Pagination.init();
 });

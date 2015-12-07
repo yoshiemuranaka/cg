@@ -71,3 +71,19 @@ body {
 
   overflow: visible;
 }
+
+
+//////////////////
+//  JAVASCRIPT  ///
+////////////////
+
+.js-animate.page {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
+
+
+

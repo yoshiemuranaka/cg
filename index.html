@@ -5,9 +5,14 @@ title: Home
 
 <main class="main-content">
 		<div class="center">
-			
-		{% include main/home.html %}
-		{% include main/about.html %}
-
+			<div class="js-animate page active" data-page="0">	
+				{% include main/home.html %}
+			</div>
+			<div class="js-animate page" data-page="1">	
+				{% include main/about.html %}
+			</div>
+			<div class="js-animate page" data-page="2">	
+				{% include main/products.html %}
+			</div>
 		</div>
 </main>
