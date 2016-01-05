@@ -10,21 +10,19 @@ $(function(){
 		},
 
 		config: {
-			URLs : ['Home', 'About', 'Products'],
-			activePage: 1
+			URLs : ['Home', 'About', 'Products']
 		},
 
 		initHistory: function() {
 			History.Adapter.bind(window, 'statechange', this.historyHandler);
+			this.historyHandler();
 		},
 
 		historyHandler: function() {
 			var state = History.getState();
 
 			Grace.Pagination.hidePage();
-
-			var revealPage = $('[data-page=' + state.data.page + ']')
-			revealPage.addClass('active')
+			Grace.Pagination.revealPage(state);
 		},
 
 		pushState: function($this) {
@@ -38,8 +36,19 @@ $(function(){
 			History.pushState(data, title, url);
 		},
 
+		revealPage: function(state) {
+			var stateIndex = state.data.page;
+
+			if(stateIndex === undefined) {
+				stateIndex = 0;
+			}
+
+			var revealPage = $('[data-page=' + stateIndex + ']');
+			revealPage.addClass('active');
+		},
+
 		hidePage: function() {
-			// this.DOM.allPages.find('.active').removeClass('active');
+			this.DOM.allPages.removeClass('active');
 		},
 
 		events: function() {
@@ -55,7 +64,7 @@ $(function(){
 			this.events();
 		}
 
-	}
+	};
 //if Modernizr.history
 	Grace.Pagination.init();
 });

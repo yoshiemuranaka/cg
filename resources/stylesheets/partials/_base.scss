@@ -45,31 +45,8 @@ body {
   }
 }
 
-
-
-//////////////////
-//  STRUCTURAL  ///
-////////////////
-
-.page-wrapper {
-  position: relative;
-  min-height: 100%;
-}
-
-.main-content {
-  padding: 100px 0 150px;
-}
-
-.center {
-  @include mq(medium) {
-    padding: 0 15px;
-  }
-
-  max-width: 750px;
-  margin: 0 auto;
-  padding: 0 3%;
-
-  overflow: visible;
+.col.list {
+  margin-bottom: 0;
 }
 
 
