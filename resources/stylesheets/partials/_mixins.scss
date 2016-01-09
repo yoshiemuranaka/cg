@@ -69,3 +69,15 @@
 //     -o-justify-content: $justify;
 //     justify-content: $justify;
 // }
+
+//////////////////
+//  TRANSITION  ///
+////////////////
+
+@mixin transition($value, $speed)
+{
+    -webkit-transition: $value $speed;
+       -moz-transition: $value $speed;
+        -ms-transition: $value $speed;
+            transition: $value $speed;
+}

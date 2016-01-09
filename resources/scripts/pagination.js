@@ -30,21 +30,28 @@ $(function(){
 			var pageIndex = $this.data().pageTarget;
 			var data = {};
 					data.page = pageIndex;
-			var title = c[pageIndex];
+			var title = c[pageIndex] + " | Cosmos Grace";
 			var url = '/?/' + c[pageIndex]; 
 
 			History.pushState(data, title, url);
 		},
 
 		revealPage: function(state) {
+			$('html, body').animate({'scrollTop': 0}, 150)
+
 			var stateIndex = state.data.page;
 
-			if(stateIndex === undefined) {
+			if(stateIndex === undefined || "" || false) {
 				stateIndex = 0;
 			}
 
 			var revealPage = $('[data-page=' + stateIndex + ']');
 			revealPage.addClass('active');
+
+			//if modernizr.csstransition 
+				//revealPage.addClass('active')
+			//else transition using javascript
+
 		},
 
 		hidePage: function() {
@@ -65,6 +72,8 @@ $(function(){
 		}
 
 	};
-//if Modernizr.history
-	Grace.Pagination.init();
+
+	if (Modernizr.history) {
+		Grace.Pagination.init();
+	}
 });
