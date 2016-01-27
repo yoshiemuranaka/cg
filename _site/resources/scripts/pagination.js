@@ -1,77 +1,73 @@
-$(function(){
+var Grace = Grace || {};
 
-	var Grace = Grace || {};
+Grace.Pagination = {
 
-	Grace.Pagination = {
+	config: {
+		URLs : ['Home', 'About', 'Products']
+	},
 
-		DOM: {
-			allPages: $('.js-animate.page'),
-			links: $('.js-page-target')
-		},
+	initHistory: function() {
+		History.Adapter.bind(window, 'statechange', this.historyHandler);
+		this.historyHandler();
+	},
 
-		config: {
-			URLs : ['Home', 'About', 'Products']
-		},
+	historyHandler: function() {
+		var state = History.getState();
 
-		initHistory: function() {
-			History.Adapter.bind(window, 'statechange', this.historyHandler);
-			this.historyHandler();
-		},
+		Grace.Pagination.hidePage();
+		Grace.Pagination.revealPage(state);
+	},
 
-		historyHandler: function() {
-			var state = History.getState();
+	pushState: function($this) {
+		var c = Grace.Pagination.config.URLs;
+		var pageIndex = $this.data().pageTarget;
+		var data = {};
+				data.page = pageIndex;
+		var title = c[pageIndex] + " | Cosmos Grace";
+		var url = '/?/' + c[pageIndex]; 
 
-			Grace.Pagination.hidePage();
-			Grace.Pagination.revealPage(state);
-		},
+		History.pushState(data, title, url);
+	},
 
-		pushState: function($this) {
-			var c = Grace.Pagination.config.URLs;
-			var pageIndex = $this.data().pageTarget;
-			var data = {};
-					data.page = pageIndex;
-			var title = c[pageIndex] + " | Cosmos Grace";
-			var url = '/?/' + c[pageIndex]; 
+	revealPage: function(state) {
+		$('html, body').animate({'scrollTop': 0}, 150)
 
-			History.pushState(data, title, url);
-		},
+		var stateIndex = state.data.page;
 
-		revealPage: function(state) {
-			$('html, body').animate({'scrollTop': 0}, 150)
-
-			var stateIndex = state.data.page;
-
-			if(stateIndex === undefined || "" || false) {
-				stateIndex = 0;
-			}
-
-			var revealPage = $('[data-page=' + stateIndex + ']');
-			revealPage.addClass('active');
-
-			//if modernizr.csstransition 
-				//revealPage.addClass('active')
-			//else transition using javascript
-
-		},
-
-		hidePage: function() {
-			this.DOM.allPages.removeClass('active');
-		},
-
-		events: function() {
-			this.DOM.links.click(function(event){
-				event.preventDefault();
-				Grace.Pagination.pushState($(this));
-			});
-
-		},
-
-		init: function() {
-			this.initHistory();
-			this.events();
+		if(stateIndex === undefined || "" ) {
+			stateIndex = 0;
 		}
 
-	};
+		var page = $('[data-page=' + stateIndex + ']');
+		page.addClass('active', Grace.Animations.easePage(page))
+		
+	},
+
+	hidePage: function() {
+		Grace.el.allPages.removeClass('active');
+	},
+
+	events: function() {
+		Grace.el.links.click(function(event){
+			event.preventDefault();
+			Grace.Pagination.pushState($(this));
+		});
+
+	},
+
+	init: function() {
+		this.initHistory();
+		this.events();
+	}
+
+};
+
+$(function(){
+
+	Grace.el = {
+			allPages: $('.js-animate.page'),
+			links: $('.js-page-target')
+	}
 
 	if (Modernizr.history) {
 		Grace.Pagination.init();

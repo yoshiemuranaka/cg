@@ -63,4 +63,22 @@ body {
 
 
 
+///////////////////
+//  ANIMATIONS  ///
+///////////////////
+
+.csstransforms.csstransitions .page {
+  transform: translateY(40px);
+
+  opacity: 0;
+}
+
+.csstransforms.csstransitions .page.ease {
+  -webkit-transition: opacity 1.5s ease, transform 1.5s ease;
+  transform: translateY(0);
+
+  opacity: 1;
+}
+
+
 

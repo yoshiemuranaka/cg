@@ -1,26 +1,16 @@
-$(function(){
+var Grace = Grace || {};
 
-	var Grace = Grace || {};
+Grace.Animations = {
 
-	Grace.Animations = {
-
-		DOM: {
-			allPages: $('.js-animate.page'),
-			links: $('.js-page-target')
-		},
-
-		config: {
-			URLs : ['Home', 'About', 'Products']
-		},
-
-		events: function() {
-
-		},
-
-		init: function() {
-	
+	easePage: function($page) {
+		//animate page content on page load or when initialized
+		if(Modernizr.csstransitions && Modernizr.csstransforms) {
+			Grace.el.allPages.removeClass('ease');
+			$page.addClass('ease')
+		} else {
+			//animate with JavaScript
 		}
+	}
 
-	};
+};
 
-});
