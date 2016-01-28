@@ -68,7 +68,27 @@
   line-height: 50px;
 }
 
+.no-touchevents .menu--list {
+  display: none;
+  
+  @include mq(medium) {
+    display: block;
+  }
+}
 
+.touchevents .menu--list {
+  display: none;
+}
+
+.no-touchevents .menu--burger{
+  @include mq(medium) {
+    display: none;
+  }
+}
+
+.touchevents .menu--burger {
+  display: block;
+}
 
 //////////////////
 //  FOOTER  /////
@@ -80,9 +100,9 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 150px;
+  height: 9em;
   width: 100%;
-  padding-top: 1em;
+  padding-top: 1.25em;
 
   background-color: $light-grey;
 }

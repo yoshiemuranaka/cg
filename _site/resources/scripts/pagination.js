@@ -39,12 +39,14 @@ Grace.Pagination = {
 		}
 
 		var page = $('[data-page=' + stateIndex + ']');
-		page.addClass('active', Grace.Animations.easePage(page))
+		page.addClass('active', Grace.Animations.easePage(page));
+		Grace.Animations.fadeIn(Grace.el.footer, 1200);
 		
 	},
 
 	hidePage: function() {
 		Grace.el.allPages.removeClass('active');
+		Grace.el.footer.css({'opacity': 0});
 	},
 
 	events: function() {
@@ -66,10 +68,15 @@ $(function(){
 
 	Grace.el = {
 			allPages: $('.js-animate.page'),
-			links: $('.js-page-target')
-	}
+			links: $('.js-page-target'),
+			footer: $('.footer'),
+			activePage: $('.js-animate.active')
+	};
 
 	if (Modernizr.history) {
 		Grace.Pagination.init();
-	}
+	} else {
+		//Grace.Animations.easePage();
+	};
+
 });
