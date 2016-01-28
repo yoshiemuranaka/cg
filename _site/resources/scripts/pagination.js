@@ -54,7 +54,7 @@ Grace.Pagination = {
 			event.preventDefault();
 			Grace.Pagination.pushState($(this));
 		});
-
+		Grace.el.burgerMenu.click(Grace.Animations.drawer.init)
 	},
 
 	init: function() {
@@ -65,12 +65,17 @@ Grace.Pagination = {
 };
 
 $(function(){
+	$('.main-nav').click(function(){console.log('clicked nav')})
+	$('.drawer .overlay').click(function(){console.log('clicked overlay')})
+	$('.menu__drawer li').click(function(){console.log('drawer link')})
 
 	Grace.el = {
 			allPages: $('.js-animate.page'),
 			links: $('.js-page-target'),
 			footer: $('.footer'),
-			activePage: $('.js-animate.active')
+			activePage: $('.js-animate.active'),
+			burgerMenu: $('.menu--burger'),
+			drawerMenu: $('.js-animate.drawer')
 	};
 
 	if (Modernizr.history) {

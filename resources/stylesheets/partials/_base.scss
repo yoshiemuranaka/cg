@@ -68,17 +68,45 @@ body {
 ///////////////////
 
 .csstransforms.csstransitions .page {
-  transform: translateY(30px);
+  transform: translateY(20px);
 
   opacity: 0;
 }
 
 .csstransforms.csstransitions .page.ease {
-  -webkit-transition: opacity 0.8s ease, transform 0.5s ease-in-out;
+  -webkit-transition: opacity 0.8s ease, transform 0.35s ease-in-out;
   transform: translateY(0);
 
   opacity: 1;
 }
+
+.csstransforms.csstransitions .drawer .menu__drawer {
+  -webkit-transition: transform 0.35s ease-in-out;
+  transform: translateY(-150px);
+}
+
+.csstransforms.csstransitions .drawer.open .menu__drawer {
+  -webkit-transition: transform 0.35s ease-in-out;
+  transform: translateY(50px);
+}
+
+.no-csstransforms.no-csstransitions .drawer .menu__drawer {
+  top: -150px;
+}
+
+.csstransforms.csstransitions .drawer.open .overlay {
+  -webkit-transition: all 0.8s ease;
+  opacity: 0.75;
+  display: block;
+}
+
+.no-csstransforms.no-csstransitions .drawer.open .overlay {
+  opacity: 0.75;
+  display: block;
+}
+
+
+
 
 
 
