@@ -65,10 +65,7 @@ Grace.Pagination = {
 };
 
 $(function(){
-	$('.main-nav').click(function(){console.log('clicked nav')})
-	$('.drawer .overlay').click(function(){console.log('clicked overlay')})
-	$('.menu__drawer li').click(function(){console.log('drawer link')})
-
+	
 	Grace.el = {
 			allPages: $('.js-animate.page'),
 			links: $('.js-page-target'),

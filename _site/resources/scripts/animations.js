@@ -4,9 +4,9 @@ Grace.Animations = {
 
 	easePage: function($page) {
 		Grace.el.allPages.removeClass('ease');
-		setTimeout(function(){
+		setTimeout(function(){ //this is so I can see the animation
 			$page.addClass('ease');
-		}, 10);
+		}, 10); 
 	},
 
 	fadeIn: function($el, speed) {
@@ -22,20 +22,37 @@ Grace.Animations = {
 	},
 
 	drawer: {
-		init: function() {
+		init: function(e) {
+		
+			e.preventDefault(); //this is to stop the window scroll
+			
 			if(Modernizr.csstransitions && Modernizr.csstransforms) {
-				if(Grace.el.drawerMenu.hasClass('open')){
-					Grace.el.drawerMenu.removeClass('open')
-				}else {
-					Grace.el.drawerMenu.addClass('open')
-				}
-			}else {
+				if(Grace.el.drawerMenu.hasClass('open')) {
+					Grace.Animations.drawer.close();
+				} else {
+					Grace.Animations.drawer.open();
+				};
+			} else {
+
 				//javascript animate top: 200px
-			}
+			};	
+
+			Grace.Animations.drawer.events();
+		},
+
+		open: function() {
+			// $('.overlay').css('height', '100%');
+			Grace.el.drawerMenu.addClass('open');
+		},
+
+		close: function() {
+			Grace.el.drawerMenu.removeClass('open');
 		},
 
 		events: function() {
-			Grace.el.links.click(Grace.Animations.drawer.init());
+			$('.overlay').one('click', Grace.Animations.drawer.close)
+			$('.main-nav__home').one('click', Grace.Animations.drawer.close)
+			Grace.el.links.one('click', Grace.Animations.drawer.close)
 		}
 	}
 

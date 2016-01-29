@@ -86,13 +86,15 @@ body {
 }
 
 .csstransforms.csstransitions .drawer.open .menu__drawer {
-  -webkit-transition: transform 0.35s ease-in-out;
+  -webkit-transition: transform 0.25s ease-in-out;
   transform: translateY(50px);
 }
 
 .no-csstransforms.no-csstransitions .drawer .menu__drawer {
   top: -150px;
 }
+
+//  FIX THIS //
 
 .csstransforms.csstransitions .drawer.open .overlay {
   -webkit-transition: all 0.8s ease;
@@ -104,9 +106,4 @@ body {
   opacity: 0.75;
   display: block;
 }
-
-
-
-
-
 
