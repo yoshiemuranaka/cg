@@ -86,7 +86,7 @@ body {
 }
 
 .csstransforms.csstransitions .drawer.open .menu__drawer {
-  -webkit-transition: transform 0.25s ease-in-out;
+  -webkit-transition: transform 0.25s ease-out-in;
   transform: translateY(50px);
 }
 
@@ -95,15 +95,12 @@ body {
 }
 
 //  FIX THIS //
+// .drawer.open .overlay {
+//   display: block;
+// }
 
-.csstransforms.csstransitions .drawer.open .overlay {
-  -webkit-transition: all 0.8s ease;
-  opacity: 0.75;
-  display: block;
-}
-
-.no-csstransforms.no-csstransitions .drawer.open .overlay {
-  opacity: 0.75;
-  display: block;
-}
+// .no-csstransforms.no-csstransitions .drawer.open .overlay {
+//   // opacity: 0.75;
+//   display: block;
+// }
 

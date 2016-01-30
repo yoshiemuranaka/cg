@@ -41,12 +41,13 @@ Grace.Animations = {
 		},
 
 		open: function() {
-			// $('.overlay').css('height', '100%');
 			Grace.el.drawerMenu.addClass('open');
+			$('.overlay').animate({'opacity': '0.75'}, 450);
 		},
 
 		close: function() {
 			Grace.el.drawerMenu.removeClass('open');
+			$('.overlay').css({'opacity': '0'});
 		},
 
 		events: function() {

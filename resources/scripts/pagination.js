@@ -46,7 +46,7 @@ Grace.Pagination = {
 
 	hidePage: function() {
 		Grace.el.allPages.removeClass('active');
-		Grace.el.footer.css({'opacity': 0});
+		Grace.el.footer.css({'opacity': '0'});
 	},
 
 	events: function() {
@@ -65,7 +65,7 @@ Grace.Pagination = {
 };
 
 $(function(){
-	
+
 	Grace.el = {
 			allPages: $('.js-animate.page'),
 			links: $('.js-page-target'),
