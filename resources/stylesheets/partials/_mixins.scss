@@ -1,6 +1,6 @@
-//////////////////
+//////////////////////
 //  MEDIA QUERIES  ///
-////////////////
+/////////////////////
 
 @mixin mq($point) {
   @if $point == medium {
@@ -17,7 +17,7 @@
 
 
 //////////////////
-//  GRID  ///
+//  GRID  ///////
 ////////////////
 
 
@@ -34,9 +34,9 @@
   }
 }
 
-//////////////////
+///////////////////
 //  BOX SHADOW  ///
-////////////////
+//////////////////
 
 @mixin boxshadow() {
   box-shadow: 0 0 5px $light-grey;
@@ -46,38 +46,38 @@
 }
 
 //////////////////
-//  FLEXBOX  ///
+//  FLEXBOX  ////
 ////////////////
 
-// @mixin flexbox($direction, $justify)
-// {
-//     display: -webkit-flex;
-//     display: -moz-box;
-//     display: -ms-flexbox;
-//     display: -o-flexbox;
-//     display: flex;
-
-//     -webkit-flex-direction: $direction;
-//     -moz-flex-direction: $direction;
-//     -ms-flex-direction: $direction;
-//     -o-flex-direction: $direction;
-//     flex-direction: $direction;
-    
-//     -webkit-justify-content: $justify;
-//     -moz-justify-content: $justify;
-//     -ms-justify-content: $justify;
-//     -o-justify-content: $justify;
-//     justify-content: $justify;
-// }
-
-//////////////////
-//  TRANSITION  ///
-////////////////
-
-@mixin transition($value, $speed)
+@mixin flexbox($direction, $justify)
 {
-    -webkit-transition: $value $speed;
-       -moz-transition: $value $speed;
-        -ms-transition: $value $speed;
-            transition: $value $speed;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -o-flexbox;
+    display: flex;
+
+    -webkit-flex-direction: $direction;
+    -moz-flex-direction: $direction;
+    -ms-flex-direction: $direction;
+    -o-flex-direction: $direction;
+    flex-direction: $direction;
+    
+    -webkit-justify-content: $justify;
+    -moz-justify-content: $justify;
+    -ms-justify-content: $justify;
+    -o-justify-content: $justify;
+    justify-content: $justify;
+}
+
+////////////////////
+//  TRANSITION  ///
+//////////////////
+
+@mixin transition($value, $speed, $ease)
+{
+    -webkit-transition: $value $speed $ease;
+       -moz-transition: $value $speed $ease;
+        -ms-transition: $value $speed $ease;
+            transition: $value $speed $ease;
 }

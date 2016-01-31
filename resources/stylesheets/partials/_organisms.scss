@@ -1,5 +1,5 @@
 //////////////////
-//  PAGE  ///
+//  PAGE  ///////
 ////////////////
 
 .page-wrapper {
@@ -8,7 +8,12 @@
 }
 
 .main-content {
-  padding: 80px 0 150px;
+  padding: 80px 0 200px;
+  width: 100%;
+  // position: fixed;
+  // height: 100%;
+    // @include flexbox(column, center);
+
 }
 
 .center {
@@ -21,6 +26,32 @@
   padding: 0 3%;
 
   overflow: visible;
+  position: relative;
+}
+
+
+//////////////////
+//  SLIDE  //////
+////////////////
+
+[data-page='0'] {
+    // @include flexbox(column, center);
+}
+
+.slide {
+
+  @include mq(medium) {
+    // position: absolute;
+    // top: 50%;
+
+    // overflow-y: hidden;
+
+    // transform: translateY(-30%);
+    // position: fixed;
+    // @include flexbox(column, center);
+
+  }
+  
 }
 
 
@@ -103,7 +134,6 @@
 .menu__drawer {
   position: fixed;
   width: 100%;
-  // top: -150px;
 
   background: $light-grey;
 
@@ -126,6 +156,7 @@
   display: block;
 }
 
+
 //////////////////
 //  FOOTER  /////
 /////////////////
@@ -139,7 +170,7 @@
   width: 100%;
   padding-top: 1.25em;
 
-  background-color: $light-grey;
+  background-color: $footer-color;
 }
 
 .footer-content {

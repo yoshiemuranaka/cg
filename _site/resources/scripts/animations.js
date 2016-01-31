@@ -63,6 +63,12 @@ Grace.Animations = {
 			Grace.el.mainNav.one('click', Grace.Animations.drawer.close)
 			Grace.el.links.one('click', Grace.Animations.drawer.close)
 		}
+	},
+
+	slide: {
+		init: function() {
+			console.log('slide initiated');
+		}
 	}
 
 };

@@ -1,3 +1,24 @@
+$(function(){
+	Grace.el = {
+			allPages: $('.js-animate.page'),
+			links: $('.js-page-target'),
+			footer: $('.footer'),
+			activePage: $('.js-animate.active'),
+			burgerMenu: $('.burger-icon'),
+			drawerMenu: $('.js-animate.drawer'), 
+			overlay: $('.drawer .overlay'),
+			mainNav: $('.main-nav')		
+	};
+
+	if (Modernizr.history) {
+		Grace.Pagination.init();
+	} else {
+		Grace.Animations.easePage($('.page.active'));
+		Grace.el.burgerMenu.click(Grace.Animations.drawer.open)
+	};
+
+});
+
 var Grace = Grace || {};
 
 Grace.Pagination = {
@@ -64,26 +85,3 @@ Grace.Pagination = {
 	}
 
 };
-
-$(function(){
-
-	Grace.el = {
-			allPages: $('.js-animate.page'),
-			links: $('.js-page-target'),
-			footer: $('.footer'),
-			activePage: $('.js-animate.active'),
-			burgerMenu: $('.burger-icon'),
-			drawerMenu: $('.js-animate.drawer'), 
-			overlay: $('.drawer .overlay'),
-			mainNav: $('.main-nav')		
-	};
-
-	if (Modernizr.history) {
-		Grace.Pagination.init();
-	} else {
-		Grace.Animations.easePage($('.page.active'));
-		Grace.el.burgerMenu.click(Grace.Animations.drawer.open)
-	};
-
-
-});
