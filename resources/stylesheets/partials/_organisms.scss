@@ -10,11 +10,24 @@
 .main-content {
   padding: 80px 0 200px;
   width: 100%;
-  // position: fixed;
-  // height: 100%;
-    // @include flexbox(column, center);
-
 }
+
+.feature-content {
+  position: relative;
+  padding: 80px 0 200px;
+  width: 100%;
+
+  @include mq(medium) {
+    @include flexbox(column, center);
+
+    position: fixed;
+    height: 100%;
+    width: 100%;
+
+    overflow: scroll;
+  }
+}
+
 
 .center {
   @include mq(medium) {
@@ -30,30 +43,67 @@
 }
 
 
+.js-animate.page {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
+.csstransitions .page {
+  opacity: 0;
+
+  transform: translateY(20px);
+}
+
+.csstransitions .page.ease {
+  opacity: 1;
+
+  transform: translateY(0);
+  -webkit-transition: opacity 0.8s ease, transform 0.35s ease-in-out;
+}
+
 //////////////////
 //  SLIDE  //////
 ////////////////
 
-[data-page='0'] {
-    // @include flexbox(column, center);
-}
-
-.slide {
-
-  @include mq(medium) {
-    // position: absolute;
-    // top: 50%;
-
-    // overflow-y: hidden;
-
-    // transform: translateY(-30%);
-    // position: fixed;
-    // @include flexbox(column, center);
-
+.js-animate.slide {
+  display: none;
+  &.active {
+    display: block;
   }
-  
 }
 
+.csstransitions .slide.out {
+  .js-animate__image {
+    opacity: 0;
+
+    transform: scale(0);
+    -webkit-transition: all 0.35s ease-out;
+  }
+  .js-animate__text {
+    opacity: 0;
+
+    transform: translateY(-20px);
+    -webkit-transition: all 0.35s ease-out;
+  }
+}
+
+
+.csstransitions .slide.in {
+   .js-animate__image {
+    opacity: 0;
+
+    transform: scale(1);
+    -webkit-transition: all 0.35s ease-in;
+  }
+  .js-animate__text {
+    opacity: 0;
+
+    transform: translateY(0);
+    -webkit-transition: all 0.35s ease-in;
+  }
+}
 
 //////////////////
 //  NAV  ////////
@@ -155,6 +205,22 @@
 .drawer.open .overlay {
   display: block;
 }
+
+.csstransitions .drawer .menu__drawer {
+  transform: translateY(-150px);
+  -webkit-transition: transform 0.35s ease-in-out;
+}
+
+.csstransitions .drawer.open .menu__drawer {
+  transform: translateY(50px);
+  -webkit-transition: transform 0.25s ease-out-in;
+}
+
+.no-csstransitions .drawer .menu__drawer {
+  top: -150px;
+}
+
+
 
 
 //////////////////
