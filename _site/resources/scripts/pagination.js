@@ -46,8 +46,15 @@ Grace.Pagination = {
 				data.page = pageIndex;
 		var title = c[pageIndex] + " | Cosmos Grace";
 		var url = '/?/' + c[pageIndex]; 
+		
+		var stateIndex = History.getState().data.page;
 
-		History.pushState(data, title, url);
+		if(parseInt(stateIndex) === parseInt(pageIndex)) {
+			$('html, body').animate({'scrollTop': 0}, 200)
+		}else {
+			History.pushState(data, title, url);
+		}
+
 	},
 
 	revealPage: function(state) {
@@ -58,6 +65,15 @@ Grace.Pagination = {
 		if(stateIndex === undefined || "" ) {
 			stateIndex = 0;
 		}
+
+		//REFACTOR THIS AND MAKE AVAILABLE OUTSIDE MODERNIZR.HISTORY
+		if(stateIndex === 0) {
+			$('.feature-content').removeClass('hide');
+			$('.main-content').addClass('hide');
+		}	else {
+			$('.main-content').removeClass('hide');
+			$('.feature-content').addClass('hide');
+		}	
 
 		var page = $('[data-page=' + stateIndex + ']');
 		page.addClass('active', Grace.Animations.easePage(page));

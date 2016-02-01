@@ -1,3 +1,7 @@
+$(function(){
+	Grace.Animations.slide.init();//initiate slide if feature content is active
+});
+
 var Grace = Grace || {};
 
 Grace.Animations = {
@@ -67,8 +71,54 @@ Grace.Animations = {
 
 	slide: {
 		init: function() {
-			console.log('slide initiated');
+			Grace.Animations.slide.events();
+		},
+
+		events: function() {
+			$('.arrow-icon').on('click', Grace.Animations.slide.checkDirection);
+		},
+
+		checkDirection: function() {
+			//after touchpad scroll event, check which direction swiping
+			//slide.next or slide.previous
+			Grace.Animations.slide.next();
+
+		},
+
+		next: function() {			
+			var slideIndex = $('.js-animate.slide.active').data().slide;
+			
+			if(slideIndex < 2 ) {
+				var nextSlideIndex = slideIndex + 1; 
+			} 
+
+			var currentSlide = $('.js-animate.slide[data-slide=' + slideIndex + ']');
+			var nextSlide = $('.js-animate.slide[data-slide=' + nextSlideIndex + ']');
+
+			Grace.Animations.slide.animateOut(currentSlide, 'up', nextSlide, this.animateIn);
+			//reset css positions and opacity
+		},
+
+		previous: function() {
+			//scroll down
+		},
+
+
+		animateOut: function($currentSlide, direction, $nextSlide, callback) {
+			
+			var config = {'opacity':'0', 'top': '-20px'};
+
+			$currentSlide.find('.js-animate__text').animate(config, 150, function(){
+				callback($nextSlide, direction);
+			});
+
+
+		},
+
+		animateIn: function($nextSlide, direction) {
+			console.log('animate in')
 		}
+
 	}
 
 };

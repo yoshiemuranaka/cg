@@ -123,7 +123,11 @@ ul.bullets {
 
 //////////////////
 //  UTILITIES  ///
-////////////////
+/////////////////
+
+.hide {
+  display: none;
+}
 
 .small-hide {
   @include mq(small-only) {

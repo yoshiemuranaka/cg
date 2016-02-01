@@ -8,24 +8,22 @@
 }
 
 .main-content {
-  padding: 80px 0 200px;
+  padding: 30px 0 200px;
   width: 100%;
 }
 
 .feature-content {
-  position: relative;
-  padding: 80px 0 200px;
-  width: 100%;
-
   @include mq(medium) {
-    @include flexbox(column, center);
-
     position: fixed;
+    top: 50%;
     height: 100%;
-    width: 100%;
 
-    overflow: scroll;
+    transform: translateY(-30%);
   }
+
+  position: relative;
+  padding: 30px 0 200px;
+  width: 100%;
 }
 
 
@@ -68,42 +66,20 @@
 ////////////////
 
 .js-animate.slide {
-  display: none;
-  &.active {
-    display: block;
+  @include mq(medium) {
+    display: none;
+    &.active {
+      display: block;
+    }
   }
+
+  display: block;
 }
 
-.csstransitions .slide.out {
-  .js-animate__image {
-    opacity: 0;
-
-    transform: scale(0);
-    -webkit-transition: all 0.35s ease-out;
-  }
-  .js-animate__text {
-    opacity: 0;
-
-    transform: translateY(-20px);
-    -webkit-transition: all 0.35s ease-out;
-  }
+.js-animate__text {
+  position: relative;
 }
 
-
-.csstransitions .slide.in {
-   .js-animate__image {
-    opacity: 0;
-
-    transform: scale(1);
-    -webkit-transition: all 0.35s ease-in;
-  }
-  .js-animate__text {
-    opacity: 0;
-
-    transform: translateY(0);
-    -webkit-transition: all 0.35s ease-in;
-  }
-}
 
 //////////////////
 //  NAV  ////////
@@ -212,15 +188,13 @@
 }
 
 .csstransitions .drawer.open .menu__drawer {
-  transform: translateY(50px);
+  transform: translateY(0);
   -webkit-transition: transform 0.25s ease-out-in;
 }
 
 .no-csstransitions .drawer .menu__drawer {
   top: -150px;
 }
-
-
 
 
 //////////////////

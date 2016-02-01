@@ -7,6 +7,8 @@ body {
     font-size: 100%;
   }
 
+  padding-top: 50px;
+
   background: $body;
 
   color: $default-font;
@@ -51,50 +53,5 @@ body.drawer-open {
 .col.list {
   margin-bottom: 0;
 }
-
-
-
-//////////////////
-//  JAVASCRIPT  /
-/////////////////
-
-// .js-animate.page {
-//   display: none;
-//   &.active {
-//     display: block;
-//   }
-// }
-
-
-// ///////////////////
-// //  ANIMATIONS  ///
-// ///////////////////
-
-// .csstransforms.csstransitions .page {
-//   opacity: 0;
-
-//   transform: translateY(20px);
-// }
-
-// .csstransforms.csstransitions .page.ease {
-//   opacity: 1;
-
-//   transform: translateY(0);
-//   -webkit-transition: opacity 0.8s ease, transform 0.35s ease-in-out;
-// }
-
-// .csstransforms.csstransitions .drawer .menu__drawer {
-//   transform: translateY(-150px);
-//   -webkit-transition: transform 0.35s ease-in-out;
-// }
-
-// .csstransforms.csstransitions .drawer.open .menu__drawer {
-//   transform: translateY(50px);
-//   -webkit-transition: transform 0.25s ease-out-in;
-// }
-
-// .no-csstransforms.no-csstransitions .drawer .menu__drawer {
-//   top: -150px;
-// }
 
 
