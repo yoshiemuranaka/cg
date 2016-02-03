@@ -96,27 +96,47 @@ Grace.Animations = {
 			var nextSlide = $('.js-animate.slide[data-slide=' + nextSlideIndex + ']');
 
 			Grace.Animations.slide.animateOut(currentSlide, 'up', nextSlide, this.animateIn);
-			//reset css positions and opacity
+
 		},
 
 		previous: function() {
-			//scroll down
+			//slide down
 		},
 
 
 		animateOut: function($currentSlide, direction, $nextSlide, callback) {
 			
-			var config = {'opacity':'0', 'top': '-20px'};
+			var config = { image: {'opacity': '0'}, text: {'opacity': '0'}};
+			
+			if(direction === 'up') {
+				config.text.top = '-20px'
+			}else {
+				config.text.top = '30px'
+			}
 
-			$currentSlide.find('.js-animate__text').animate(config, 150, function(){
+			$currentSlide.find('.js-animate__text').animate(config.text, 180)
+			setTimeout($currentSlide.find('.js-animate__image').animate(config.text, 800, function(){
+				$currentSlide.removeClass('active');
 				callback($nextSlide, direction);
-			});
-
+			}), 400)
 
 		},
 
 		animateIn: function($nextSlide, direction) {
-			console.log('animate in')
+			$nextSlide.find('.js-animate__text, .js-animate__image').css({'opacity': '0'})
+			$nextSlide.addClass('active');
+
+			var config = { image: {'opacity': '1'}, text: {'opacity': '1', 'top': '0'}};
+
+			if(direction === 'up') {
+				$nextSlide.find('.js-animate__text').css({'top': '30px'});
+			}else {
+				$nextSlide.find('.js-animate__text').css({'top': '-20px'});
+			}
+			
+			$nextSlide.find('.js-animate__text').animate(config.text, 180);
+			setTimeout($nextSlide.find('.js-animate__image').animate({'opacity': '1'}, 800), 400)
+
 		}
 
 	}

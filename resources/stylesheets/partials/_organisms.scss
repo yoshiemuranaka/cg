@@ -77,9 +77,42 @@
 }
 
 .js-animate__text {
-  position: relative;
+  position: relative; 
 }
 
+// .csstransitions .slide .js-animate__text,
+// .csstransitions .slide .js-animate__image {
+//   -webkit-transition: opacity 0.8s ease, transform 0.35s ease-in-out;
+// }
+
+// .csstransitions .slide.out .js-animate__text,
+// .csstransitions .slide.out .js-animate__image {
+//   opacity: 0;
+// }
+
+// .csstransitions .slide.out {
+//   &.top .js-animate__text {
+//     transform: translateY(-20px);
+//   }
+//   &.bottom .js-animate__text {
+//     transform: translateY(30px);
+//   }
+// }
+
+// .csstransitions .slide.in .js-animate__text,
+// .csstransitions .slide.in .js-animate__image {
+//   opacity: 1;
+//   transform: translateY(0)
+// }
+
+// .csstransitions .slide {
+//   &.top .js-animate__text {
+//     transform: translateY(-20px);
+//   }
+//   &.bottom .js-animate__text {
+//     transform: translateY(30px);
+//   }
+// }
 
 //////////////////
 //  NAV  ////////
