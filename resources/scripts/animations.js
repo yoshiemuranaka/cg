@@ -76,6 +76,7 @@ Grace.Animations = {
 
 		events: function() {
 			$('.arrow-icon').on('click', Grace.Animations.slide.checkDirection);
+			// $(window).on('resize', )
 		},
 
 		checkDirection: function() {
@@ -115,10 +116,10 @@ Grace.Animations = {
 			}
 
 			$currentSlide.find('.js-animate__text').animate(config.text, 180)
-			setTimeout($currentSlide.find('.js-animate__image').animate(config.text, 800, function(){
+			setTimeout($currentSlide.find('.js-animate__image').animate(config.text, 750, function(){
 				$currentSlide.removeClass('active');
 				callback($nextSlide, direction);
-			}), 400)
+			}), 300)
 
 		},
 
@@ -135,7 +136,7 @@ Grace.Animations = {
 			}
 			
 			$nextSlide.find('.js-animate__text').animate(config.text, 180);
-			setTimeout($nextSlide.find('.js-animate__image').animate({'opacity': '1'}, 800), 400)
+			setTimeout($nextSlide.find('.js-animate__image').animate(config.image, 750), 300)
 
 		}
 
