@@ -1,5 +1,5 @@
 $(function(){
-	Grace.Animations.slide.init();//initiate slide if feature content is active
+	Grace.Animations.slide.checkForInit();//initiate slide if feature content is active
 });
 
 var Grace = Grace || {};
@@ -70,15 +70,21 @@ Grace.Animations = {
 	},
 
 	slide: {
+		
 		init: function() {
 			Grace.Animations.slide.events();
 		},
 
 		checkForInit: function() {
 			//work on this
-
-			// if($)
-		}
+			if(!$('.feature-content').hasClass('hide')){
+				if(window.innerWidth > 700){
+					Grace.Animations.slide.init();
+				}else {
+					$('.js-animate__text, .js-animate__image').css({'opacity': '1', 'top': '0'})
+				}
+			}
+		},
 
 		events: function() {
 			$('.arrow-icon').on('click', Grace.Animations.slide.checkDirection);
@@ -88,11 +94,13 @@ Grace.Animations = {
 		checkDirection: function() {
 			//after touchpad scroll event, check which direction swiping
 			//slide.next or slide.previous
-			Grace.Animations.slide.next();
+			if($('.js-animate.slide.active').data().slide < 2) {
+				Grace.Animations.slide.next();
+			}
 
 		},
 
-		next: function() {			
+		next: function() {	
 			var slideIndex = $('.js-animate.slide.active').data().slide;
 			
 			if(slideIndex < 2 ) {
@@ -112,20 +120,22 @@ Grace.Animations = {
 
 
 		animateOut: function($currentSlide, direction, $nextSlide, callback) {
-			
 			var config = { image: {'opacity': '0'}, text: {'opacity': '0'}};
-			
+
 			if(direction === 'up') {
 				config.text.top = '-20px'
 			}else {
 				config.text.top = '30px'
 			}
 
-			$currentSlide.find('.js-animate__text').animate(config.text, 180)
-			setTimeout($currentSlide.find('.js-animate__image').animate(config.text, 750, function(){
-				$currentSlide.removeClass('active');
-				callback($nextSlide, direction);
-			}), 300)
+			$currentSlide.find('.js-animate__text').animate(config.text, 200)
+
+			setTimeout(function(){
+				$currentSlide.find('.js-animate__image').animate(config.text, 550, function(){
+					$currentSlide.removeClass('active');
+					callback($nextSlide, direction);
+				})
+			}, 150)
 
 		},
 
@@ -141,8 +151,11 @@ Grace.Animations = {
 				$nextSlide.find('.js-animate__text').css({'top': '-20px'});
 			}
 			
-			$nextSlide.find('.js-animate__text').animate(config.text, 180);
-			setTimeout($nextSlide.find('.js-animate__image').animate(config.image, 750), 300)
+			$nextSlide.find('.js-animate__text').animate(config.text, 200);
+
+			setTimeout(function(){
+				$nextSlide.find('.js-animate__image').animate(config.image, 650)
+			}, 150)
 
 		}
 
