@@ -74,9 +74,15 @@ Grace.Animations = {
 			Grace.Animations.slide.events();
 		},
 
+		checkForInit: function() {
+			//work on this
+
+			// if($)
+		}
+
 		events: function() {
 			$('.arrow-icon').on('click', Grace.Animations.slide.checkDirection);
-			// $(window).on('resize', )
+			$(window).on('resize', Grace.Animations.slide.checkForInit);
 		},
 
 		checkDirection: function() {
