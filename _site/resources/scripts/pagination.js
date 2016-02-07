@@ -66,13 +66,12 @@ Grace.Pagination = {
 			stateIndex = 0;
 		}
 
-		//REFACTOR THIS AND MAKE AVAILABLE OUTSIDE MODERNIZR.HISTORY
 		if(stateIndex === 0) {
-			$('.feature-content').removeClass('hide');
-			$('.main-content').addClass('hide');
+			$('.feature-content').addClass('active');
+			$('.main-content').removeClass('active');
 		}	else {
-			$('.main-content').removeClass('hide');
-			$('.feature-content').addClass('hide');
+			$('.main-content').addClass('active');
+			$('.feature-content').removeClass('active');
 		}	
 
 		var page = $('[data-page=' + stateIndex + ']');

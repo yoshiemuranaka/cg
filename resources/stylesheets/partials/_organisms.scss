@@ -8,8 +8,12 @@
 }
 
 .main-content {
-  padding: 30px 0 200px;
+  display: none;
   width: 100%;
+  padding: 30px 0 200px;
+  &.active {
+    display: block;
+  }
 }
 
 .feature-content {
@@ -21,10 +25,15 @@
     transform: translateY(-30%);
   }
 
+  display: none;
   position: relative;
-  padding: 30px 0 200px;
   width: 100%;
+  padding: 30px 0 200px;
+  &.active {
+    display: block;
+  }
 }
+
 
 
 .center {

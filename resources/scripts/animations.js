@@ -1,5 +1,5 @@
 $(function(){
-	Grace.Animations.slide.checkForInit();//initiate slide if feature content is active
+	Grace.Animations.slide.init();//initiate slide if feature content is active
 });
 
 var Grace = Grace || {};
@@ -72,14 +72,17 @@ Grace.Animations = {
 	slide: {
 		
 		init: function() {
-			Grace.Animations.slide.events();
+			Grace.Animations.slide.checkForInit();
+			$(window).on('resize', function(){
+				Grace.debounce(Grace.Animations.slide.checkForInit(), 1000)
+			});
 		},
 
 		checkForInit: function() {
 			//work on this
-			if(!$('.feature-content').hasClass('hide')){
-				if(window.innerWidth > 700){
-					Grace.Animations.slide.init();
+			if($('.feature-content').hasClass('active')){
+				if(window.innerWidth >= 700){
+					Grace.Animations.slide.events();
 				}else {
 					$('.js-animate__text, .js-animate__image').css({'opacity': '1', 'top': '0'})
 				}
@@ -87,8 +90,9 @@ Grace.Animations = {
 		},
 
 		events: function() {
+			//checking for scroll and click events
+
 			$('.arrow-icon').on('click', Grace.Animations.slide.checkDirection);
-			$(window).on('resize', Grace.Animations.slide.checkForInit);
 		},
 
 		checkDirection: function() {
@@ -161,5 +165,29 @@ Grace.Animations = {
 
 	}
 
+};
+
+
+// Debounce Method
+// ---------------
+Grace.debounce = function(func, wait, immediate) {
+	console.log('debounce')
+	var timeout;
+	return function() {
+		var context = this,
+			args = arguments;
+		var later = function() {
+			timeout = null;
+			if ( !immediate ) {
+				func.apply(context, args);
+			}
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait || 200);
+		if ( callNow ) { 
+			func.apply(context, args);
+		}
+	};
 };
 
