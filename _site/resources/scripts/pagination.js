@@ -12,6 +12,7 @@ $(function(){
 
 	if (Modernizr.history) {
 		Grace.Pagination.init();
+		Grace.el.burgerMenu.click(Grace.Animations.drawer.init)
 	} else {
 		Grace.Animations.easePage($('.page.active'));
 		Grace.el.burgerMenu.click(Grace.Animations.drawer.open)
@@ -91,7 +92,6 @@ Grace.Pagination = {
 			e.stopPropagation(); //this is to stop bubbling up
 			Grace.Pagination.pushState($(this));
 		});
-		Grace.el.burgerMenu.click(Grace.Animations.drawer.init)
 	},
 
 	init: function() {

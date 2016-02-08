@@ -70,34 +70,51 @@ Grace.Animations = {
 	},
 
 	slide: {
+
+		active: true,
+		screenSize: true,
 		
 		init: function() {
-			Grace.Animations.slide.checkForInit();
-			$(window).on('resize', function(){
-				Grace.debounce(Grace.Animations.slide.checkForInit(), 1000)
-			});
+			this.isSlideActive();
+			$('.js-page-target').on('click', Grace.Animations.slide.checkIfActive);
+			$(window).on('resize', Grace.debounce(Grace.Animations.slide.checkWindowSize, 500));
 		},
 
-		checkForInit: function() {
+		isSlideActive: function() {
 			//work on this
-			if($('.feature-content').hasClass('active')){
-				if(window.innerWidth >= 700){
+			if(this.active && this.screenSize){
 					Grace.Animations.slide.events();
 				}else {
 					$('.js-animate__text, .js-animate__image').css({'opacity': '1', 'top': '0'})
 				}
+
+		},
+
+		checkIfActive: function() {
+			if($('.feature-content').hasClass('active')){
+				this.active = true;
+			}else {
+				this.active = false;
+			}
+		},
+
+		checkWindowSize: function() {
+			if(window.innerWidth >= 700) {
+				this.screenSize = true;
+			} else {
+				this.screenSize = false;
 			}
 		},
 
 		events: function() {
 			//checking for scroll and click events
-
 			$('.arrow-icon').on('click', Grace.Animations.slide.checkDirection);
 		},
 
-		checkDirection: function() {
+		checkDirection: function(e) {
 			//after touchpad scroll event, check which direction swiping
 			//slide.next or slide.previous
+
 			if($('.js-animate.slide.active').data().slide < 2) {
 				Grace.Animations.slide.next();
 			}
@@ -133,8 +150,11 @@ Grace.Animations = {
 			}
 
 			$currentSlide.find('.js-animate__text').animate(config.text, 200)
+			
+			var timer;
+			clearTimeout(timer);
 
-			setTimeout(function(){
+			timer = setTimeout(function(){
 				$currentSlide.find('.js-animate__image').animate(config.text, 550, function(){
 					$currentSlide.removeClass('active');
 					callback($nextSlide, direction);
@@ -144,6 +164,7 @@ Grace.Animations = {
 		},
 
 		animateIn: function($nextSlide, direction) {
+			console.log('animate in')
 			$nextSlide.find('.js-animate__text, .js-animate__image').css({'opacity': '0'})
 			$nextSlide.addClass('active');
 
@@ -156,10 +177,14 @@ Grace.Animations = {
 			}
 			
 			$nextSlide.find('.js-animate__text').animate(config.text, 200);
+			
+			var timer;
+			clearTimeout(timer);
 
-			setTimeout(function(){
+			timer = setTimeout(function(){
 				$nextSlide.find('.js-animate__image').animate(config.image, 650)
 			}, 150)
+
 
 		}
 
@@ -171,7 +196,6 @@ Grace.Animations = {
 // Debounce Method
 // ---------------
 Grace.debounce = function(func, wait, immediate) {
-	console.log('debounce')
 	var timeout;
 	return function() {
 		var context = this,

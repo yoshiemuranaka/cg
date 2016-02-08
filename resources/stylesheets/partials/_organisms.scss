@@ -12,7 +12,7 @@
   width: 100%;
   padding: 30px 0 200px;
   &.active {
-    display: block;
+    display: block !important; 
   }
 }
 
@@ -30,10 +30,9 @@
   width: 100%;
   padding: 30px 0 200px;
   &.active {
-    display: block;
+    display: block !important;
   }
 }
-
 
 
 .center {
@@ -53,7 +52,7 @@
 .js-animate.page {
   display: none;
   &.active {
-    display: block;
+    display: block !important;
   }
 }
 
@@ -64,7 +63,7 @@
 }
 
 .csstransitions .page.ease {
-  opacity: 1;
+  opacity: 1 !important;
 
   transform: translateY(0);
   -webkit-transition: opacity 0.8s ease, transform 0.35s ease-in-out;
@@ -87,6 +86,13 @@
 
 .js-animate__text {
   position: relative; 
+}
+
+.js-animate__text, 
+.js-animate__image {
+  @include mq(small-only){
+    opacity: 1 !important;
+  }
 }
 
 // .csstransitions .slide .js-animate__text,
