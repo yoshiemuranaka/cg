@@ -1,5 +1,6 @@
 $(function(){
 	Grace.Animations.slide.init();//initiate slide if feature content is active
+	$('#fullpage').fullpage();
 });
 
 var Grace = Grace || {};
