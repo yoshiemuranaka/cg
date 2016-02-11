@@ -4,9 +4,9 @@ $(function(){
 		anchors: ['firstSection', 'secondSection', 'thirdSection'],
 		responsiveWidth: 700,
 		recordHistory: false
-		onLeave: function(index, nextIndex, direction) {
-			$(this).animate({'opacity': '0'}, 150)
-		}
+		// onLeave: function(index, nextIndex, direction) {
+		// 	$(this).animate({'opacity': '0'}, 150)
+		// }
 	});
 });
 
