@@ -3,10 +3,8 @@ $(function(){
 	$('#fullpage').fullpage({
 		anchors: ['firstSection', 'secondSection', 'thirdSection'],
 		responsiveWidth: 700,
-		recordHistory: false
-		// onLeave: function(index, nextIndex, direction) {
-		// 	$(this).animate({'opacity': '0'}, 150)
-		// }
+		recordHistory: false,
+		easingcss3: 'ease-in-out'
 	});
 });
 
