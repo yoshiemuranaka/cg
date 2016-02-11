@@ -1,6 +1,13 @@
 $(function(){
 	Grace.Animations.slide.init();//initiate slide if feature content is active
-	$('#fullpage').fullpage();
+	$('#fullpage').fullpage({
+		anchors: ['firstSection', 'secondSection', 'thirdSection'],
+		responsiveWidth: 700,
+		recordHistory: false
+		onLeave: function(index, nextIndex, direction) {
+			$(this).animate({'opacity': '0'}, 150)
+		}
+	});
 });
 
 var Grace = Grace || {};

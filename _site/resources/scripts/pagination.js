@@ -70,9 +70,14 @@ Grace.Pagination = {
 		if(stateIndex === 0) {
 			$('.feature-content').addClass('active');
 			$('.main-content').removeClass('active');
+			$.fn.fullpage.setAllowScrolling(true);
+			$.fn.fullpage.setKeyboardScrolling(true);
+
 		}	else {
 			$('.main-content').addClass('active');
 			$('.feature-content').removeClass('active');
+			$.fn.fullpage.setAllowScrolling(false);
+			$.fn.fullpage.setKeyboardScrolling(false);
 		}	
 
 		var page = $('[data-page=' + stateIndex + ']');
