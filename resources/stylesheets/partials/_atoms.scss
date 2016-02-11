@@ -97,6 +97,32 @@ ul.bullets {
   font-size:1.5em
 }
 
+.main-nav .logo {
+  width: 50px;
+}
+
+.svg-icon.arrow {
+  @include mq(small-only) {
+    display: none;
+  }
+
+  position: absolute;
+  top: 13%;
+  left: 50%;
+  height: 30px;
+  width: 30px;
+
+  opacity: 1;
+
+  -webkit-transition: opacity 0.8s ease;
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+
+
+
 //////////////////
 //  OVERLAY  ///
 ////////////////

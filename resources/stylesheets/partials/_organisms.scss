@@ -19,7 +19,7 @@
 .feature-content {
   @include mq(medium) {
     position: fixed;
-    top: 50%;
+    top: 46%;
     height: 100%;
 
     transform: translateY(-30%);
@@ -70,28 +70,31 @@
 }
 
 //////////////////
-//  SLIDE  //////
+//  SECTION  /////
 ////////////////
 
-.js-animate.slide {
+.js-animate.section .section__text {
+  position: relative;
   @include mq(medium) {
-    display: none;
-    &.active {
-      display: block;
-    }
-  }
-
-  display: block;
+    padding-top: 50%;
+    transform: translateY(-50%);
+  } 
 }
 
-.js-animate__text {
-  position: relative; 
-}
-
-.js-animate__text, 
-.js-animate__image {
+.js-animate.section .section__text, 
+.js-animate.section .section__image {
   @include mq(small-only){
     opacity: 1 !important;
+  }
+}
+
+@include mq(medium) {
+  .fp-tableCell {
+    padding-top: 5.188em;
+  }
+
+  .fp-table:first-child > .fp-tableCell {
+    padding-top: 0;
   }
 }
 

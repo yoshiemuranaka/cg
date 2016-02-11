@@ -1,11 +1,5 @@
 $(function(){
-	Grace.Animations.slide.init();//initiate slide if feature content is active
-	$('#fullpage').fullpage({
-		anchors: ['firstSection', 'secondSection', 'thirdSection'],
-		responsiveWidth: 700,
-		recordHistory: false,
-		easingcss3: 'ease-in-out'
-	});
+	Grace.Animations.fullPage.init();
 });
 
 var Grace = Grace || {};
@@ -75,149 +69,42 @@ Grace.Animations = {
 		}
 	},
 
-	slide: {
+	fullPage: {
+		init: function(){
+			var arrowAnimation = setTimeout(this.animateArrow, 3000);
 
-		active: true,
-		screenSize: true,
-		
-		init: function() {
-			this.isSlideActive();
-			$('.js-page-target').on('click', Grace.Animations.slide.checkIfActive);
-			$(window).on('resize', Grace.debounce(Grace.Animations.slide.checkWindowSize, 500));
-		},
-
-		isSlideActive: function() {
-			//work on this
-			if(this.active && this.screenSize){
-					Grace.Animations.slide.events();
-				}else {
-					$('.js-animate__text, .js-animate__image').css({'opacity': '1', 'top': '0'})
+			$('#fullpage').fullpage({
+				anchors: ['HonHamachi', 'secondSection', 'thirdSection'],
+				responsiveWidth: 700,
+				recordHistory: false,
+				easingcss3: 'ease-in-out',
+				afterLoad: function(anchorLink, index){
+					var max = $('[data-anchor]').length;
+					if(index == max) {
+						$('.arrow').addClass('hidden');
+					}else{
+						$('.arrow').removeClass('hidden');
+					}
+				},
+				onLeave: function(){
+					clearTimeout(arrowAnimation);
 				}
-
+			});
+			this.events();
 		},
 
-		checkIfActive: function() {
-			if($('.feature-content').hasClass('active')){
-				this.active = true;
-			}else {
-				this.active = false;
-			}
+		events: function(){
+			$('.js-section-target').on('click', Grace.Animations.fullPage.next)
 		},
 
-		checkWindowSize: function() {
-			if(window.innerWidth >= 700) {
-				this.screenSize = true;
-			} else {
-				this.screenSize = false;
-			}
+		next: function(){
+			$.fn.fullpage.moveSectionDown();
 		},
 
-		events: function() {
-			//checking for scroll and click events
-			$('.arrow-icon').on('click', Grace.Animations.slide.checkDirection);
-		},
-
-		checkDirection: function(e) {
-			//after touchpad scroll event, check which direction swiping
-			//slide.next or slide.previous
-
-			if($('.js-animate.slide.active').data().slide < 2) {
-				Grace.Animations.slide.next();
-			}
-
-		},
-
-		next: function() {	
-			var slideIndex = $('.js-animate.slide.active').data().slide;
-			
-			if(slideIndex < 2 ) {
-				var nextSlideIndex = slideIndex + 1; 
-			} 
-
-			var currentSlide = $('.js-animate.slide[data-slide=' + slideIndex + ']');
-			var nextSlide = $('.js-animate.slide[data-slide=' + nextSlideIndex + ']');
-
-			Grace.Animations.slide.animateOut(currentSlide, 'up', nextSlide, this.animateIn);
-
-		},
-
-		previous: function() {
-			//slide down
-		},
-
-
-		animateOut: function($currentSlide, direction, $nextSlide, callback) {
-			var config = { image: {'opacity': '0'}, text: {'opacity': '0'}};
-
-			if(direction === 'up') {
-				config.text.top = '-20px'
-			}else {
-				config.text.top = '30px'
-			}
-
-			$currentSlide.find('.js-animate__text').animate(config.text, 200)
-			
-			var timer;
-			clearTimeout(timer);
-
-			timer = setTimeout(function(){
-				$currentSlide.find('.js-animate__image').animate(config.text, 550, function(){
-					$currentSlide.removeClass('active');
-					callback($nextSlide, direction);
-				})
-			}, 150)
-
-		},
-
-		animateIn: function($nextSlide, direction) {
-			console.log('animate in')
-			$nextSlide.find('.js-animate__text, .js-animate__image').css({'opacity': '0'})
-			$nextSlide.addClass('active');
-
-			var config = { image: {'opacity': '1'}, text: {'opacity': '1', 'top': '0'}};
-
-			if(direction === 'up') {
-				$nextSlide.find('.js-animate__text').css({'top': '30px'});
-			}else {
-				$nextSlide.find('.js-animate__text').css({'top': '-20px'});
-			}
-			
-			$nextSlide.find('.js-animate__text').animate(config.text, 200);
-			
-			var timer;
-			clearTimeout(timer);
-
-			timer = setTimeout(function(){
-				$nextSlide.find('.js-animate__image').animate(config.image, 650)
-			}, 150)
-
-
+		animateArrow: function(){
+			$('.arrow').animate({'top': '13.5%'}, 500, 'swing')
 		}
-
 	}
 
-};
-
-
-// Debounce Method
-// ---------------
-Grace.debounce = function(func, wait, immediate) {
-	var timeout;
-	return function() {
-		var context = this,
-			args = arguments;
-		var later = function() {
-			timeout = null;
-			if ( !immediate ) {
-				func.apply(context, args);
-			}
-		};
-		var callNow = immediate && !timeout;
-		clearTimeout(timeout);
-		timeout = setTimeout(later, wait || 200);
-		if ( callNow ) { 
-			func.apply(context, args);
-		}
-	};
 };
 

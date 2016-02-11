@@ -39,7 +39,7 @@
     var ACTIVE_SEL =            '.' + ACTIVE;
 
     // section
-    var SECTION_DEFAULT_SEL =   '#fullpage .section';
+    var SECTION_DEFAULT_SEL =   '#fullpage .js-animate.section';
     var SECTION =               'fp-section';
     var SECTION_SEL =           '.' + SECTION;
     var SECTION_ACTIVE_SEL =    SECTION_SEL + ACTIVE_SEL;
@@ -60,7 +60,7 @@
     var SHOW_ACTIVE_TOOLTIP =   'fp-show-active';
 
     // slide
-    var SLIDE_DEFAULT_SEL =     '#fullpage .slide';
+    var SLIDE_DEFAULT_SEL =     '#fullpage .js-animate.slide';
     var SLIDE =                 'fp-slide';
     var SLIDE_SEL =             '.' + SLIDE;
     var SLIDE_ACTIVE_SEL =      SLIDE_SEL + ACTIVE_SEL;
